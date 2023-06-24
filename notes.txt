@@ -1,0 +1,42 @@
+Front End:
+ng new client
+cd client
+ng update @angular/cli @angular/core --allow-dirty
+npm install @angular/material @angular/cdk @angular/animations --save
+ng add @angular/material
+ng g m --routing <component_name>
+ng g c <component_name>
+ng serve
+ng g service reusable
+	For Creating service
+	
+Backend
+create tsserver inside project folder
+cd tsserver
+npm init -y
+npm install typescript -g
+npm install tslint -g
+npm install -g nodemon
+tsc --init
+tslint --init
+
+npm install <package-name> --save-dev
+	for devDependencies
+npm install <package-name> 
+	by default dependencies
+
+controller folder where all business logic comes
+model for all DB scripts
+for models use class rather than seperate functions
+Model Should not be directly accessible in routing
+It should be called through controller
+
+Add two components in index.ts file to recognize req.body
+
+ng g service httpservice 
+	To connect to the node project
+npm install --save @angular/flex-layout @angular/cdk
+	For Flexlayout
+
+import { FlexLayoutModule } from '@angular/flex-layout';
+	add in app.module.ts
