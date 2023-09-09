@@ -5,7 +5,7 @@
         </mat-card-header>
         <br>
         <mat-card-content >
-            <form fxLayout="column" fxLayoutAlign="space-between center">
+            <form [formGroup]="form" fxLayout="column" fxLayoutAlign="space-between center">
                 <mat-form-field appearance="outline">
                     <mat-label>Email</mat-label>
                     <input matInput type="email" required formControlName="username">
@@ -17,7 +17,7 @@
             </form>
         </mat-card-content>
         <mat-card-actions fxLayoutAlign="center">
-            <button mat-fab extended color="primary" onclick="login()">
+            <button mat-fab extended color="primary" (click)="login()">
                 <mat-icon>login</mat-icon>
                 Login
             </button>

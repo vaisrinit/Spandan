@@ -1,0 +1,20 @@
+.cards{
+    width:345px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    height: 150px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.cards-div{
+    padding: 2%;
+}
+
+.icons{
+    color: rgb(197, 122, 31) ;
+    font-size: 100px;
+    height: max-content;
+    width: max-content;
+    padding-left: 2%;
+    padding-top: 2%;
+}

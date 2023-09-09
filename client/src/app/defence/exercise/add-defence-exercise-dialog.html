@@ -1,0 +1,82 @@
+<div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-label color="primary">Add Exercise</mat-label>
+    <mat-icon matTooltip="Close dialog" (click)="onClose()">cancel</mat-icon>
+</div>
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="form" fxLayout="column">
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Exercise Name</mat-label>
+                    <input id="ex_name" name="ex_name" matInput placeholder="Exercise Name" formControlName="ex_name"
+                        required>
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>Exercise Type</mat-label>
+                    <mat-select (selectionChange)="changeExType($event.value)">
+                        <mat-option  *ngFor="let type of ex_types" [value]="type.name">
+                          {{type.dispname}}
+                        </mat-option>
+                      </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Forces Involved</mat-label>
+                    <mat-select (selectionChange)="changeForce($event.value)">
+                        <mat-option  *ngFor="let force of forces" [value]="force.name">
+                          {{force.dispname}}
+                        </mat-option>
+                      </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Troop/Fleet/Aircraft</mat-label>
+                    <input id="troop" name="troop" matInput placeholder="Troop/Fleet/Aircraft" formControlName="troop"
+                        required>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Countries Involved</mat-label>
+                    <input id="countries" name="countries" matInput placeholder="Countries Involved" formControlName="countries"
+                        required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Place</mat-label>
+                    <input id="place" name="place" matInput placeholder="Place" formControlName="place"
+                        required>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Start Date</mat-label>
+                    <input formControlName = "ex_start_date" matInput [matDatepicker]="picker1" [(ngModel)]="ex_start_date">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>End Date</mat-label>
+                    <input formControlName = "ex_end_date" matInput [matDatepicker]="picker2" [(ngModel)]="ex_end_date">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                  </mat-form-field>
+            </div>
+            
+            <div fxLayout="column" >
+                <mat-form-field appearance="outline">
+                    <mat-label>Brief Description</mat-label>
+                    <textarea id="description" name="description" placeholder="Brief Description" formControlName="description" matInput rows="1" cols="100"></textarea>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Link</mat-label>
+                    <textarea id="link" name="link" placeholder="Link" formControlName="link" matInput rows="1" cols="100"></textarea>
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+        <button mat-raised-button color="accent">Cancel</button>
+        <button mat-raised-button color="primary" (click)="addExerciseDetails()">Add exercise</button>
+    </mat-card-actions>
+</mat-card>

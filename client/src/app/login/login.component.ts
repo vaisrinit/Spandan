@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { Form, FormBuilder,FormControl, FormGroup,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpserviceService } from '../httpservice.service';
+import { ReusableService } from '../reusable.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   form = this.fb.group({
     username: new FormControl(null,Validators.compose([
       Validators.required,
@@ -23,7 +25,8 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private fb:FormBuilder,
-    private http: HttpserviceService
+    private http: HttpserviceService,
+    private reusable:ReusableService
   ){  }
 
   ngOnInit(): void {
@@ -34,14 +37,17 @@ export class LoginComponent {
     this.router.navigate(['home']);
   }
 
-  async register(){
-    // console.log(this.form.value);
-    let param = {
+  async login(){
+    console.log(this.form.value);
+    let param:any = {
       email:this.form.value.username,
       password:this.form.value.password
     };
+    // let result = await this.http.login(this.reusable.encrypt(Buffer.from(JSON.parse(param),"base64")));
     let result = await this.http.login(param);
     if(result.success){
+      console.log(result);
+      localStorage.setItem("token",result.rows[0].token);
       this.home();
     }
   }

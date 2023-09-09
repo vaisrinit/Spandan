@@ -27,3 +27,23 @@ create table users (
 );
 
 ALTER TABLE users add column is_admin BOOLEAN DEFAULT FALSE;
+
+ALTER TABLE users DROP COLUMN password;
+
+ALTER TABLE users ADD COLUMN salt varchar NOT NULL;
+ALTER TABLE users ADD COLUMN hash_password varchar NOT NULL;
+
+CREATE TABLE defence.exercise(
+id serial primary key,
+name varchar,
+type varchar,
+force varchar,
+troop varchar,
+countries varchar,
+place varchar,
+description varchar,
+link varchar,
+start_date timestamptz,
+end_date timestamptz,
+created_at timestamptz default now()
+);

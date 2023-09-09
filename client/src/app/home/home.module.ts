@@ -1,28 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LoginRoutingModule } from './login-routing.module';
-import { LoginComponent } from './login.component';
-
-import {MaterialModule} from '../material/material.module'
+import { HomeRoutingModule } from './home-routing.module';
+import { HomeComponent } from './home.component';
+import { MaterialModule } from '../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
-import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpserviceService } from '../httpservice.service';
+
 @NgModule({
   declarations: [
-    LoginComponent
+    HomeComponent,
   ],
   imports: [
     CommonModule,
-    LoginRoutingModule,
+    HomeRoutingModule,
     MaterialModule,
-    FlexLayoutModule,
-    ReactiveFormsModule
+    FlexLayoutModule
   ],
   exports:[
-    ReactiveFormsModule
+    HomeComponent
   ],
+  
 })
-export class LoginModule { }
+export class HomeModule { }

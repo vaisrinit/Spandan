@@ -19,6 +19,8 @@ npm install tslint -g
 npm install -g nodemon
 tsc --init
 tslint --init
+npm install jsonwebtoken
+npm i --save-dev @types/jsonwebtoken
 
 npm install <package-name> --save-dev
 	for devDependencies

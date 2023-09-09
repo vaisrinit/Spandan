@@ -1,0 +1,40 @@
+
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav>
+        <mat-nav-list (click)="sidenav.close()">
+            <a mat-list-item routerLink="/">
+                <mat-icon>library_books</mat-icon>
+                <span>Defence</span>
+            </a>
+            <a mat-list-item routerLink="defence">
+                <mat-icon>question_answer</mat-icon>
+                <span>Current Affairs</span>
+            </a>
+            <a mat-list-item routerLink="">
+                <mat-icon>drag_indicator</mat-icon>
+                <span>Politics</span>
+            </a>
+            <a mat-list-item routerLink="">
+                <mat-icon>park</mat-icon>
+                <span>Books and Authors</span>
+            </a>
+            <a mat-list-item>
+                <mat-icon>account_circle</mat-icon>
+                <span>Logout</span>
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-toolbar color="primary">
+        <button mat-icon-button (click)="sidenav.open()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <a mat-button [matMenuTriggerFor]="dropdown">
+            Screens
+        </a>
+        <mat-menu #dropdown>
+            <button mat-menu-item routerLink="/">Courses</button>
+            <button mat-menu-item routerLink="/about">About</button>
+        </mat-menu>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+</mat-sidenav-container>
