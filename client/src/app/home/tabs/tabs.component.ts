@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class TabsComponent implements OnInit{
   ngOnInit(): void {
-
+    sessionStorage.setItem("currentRoute","/home/tabs");
   }
   
   constructor(

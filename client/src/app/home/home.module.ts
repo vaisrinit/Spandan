@@ -6,7 +6,7 @@ import { HomeComponent } from './home.component';
 import { MaterialModule } from '../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpserviceService } from '../httpservice.service';
+import { HttpserviceService } from '../_services/httpservice.service';
 
 @NgModule({
   declarations: [

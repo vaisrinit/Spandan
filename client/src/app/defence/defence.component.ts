@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
-import { HttpserviceService } from '../httpservice.service';
+import { HttpserviceService } from '../_services/httpservice.service';
 
 @Component({
   selector: 'app-defence',
@@ -10,7 +10,7 @@ import { HttpserviceService } from '../httpservice.service';
 export class DefenceComponent implements OnInit{
 
   ngOnInit(): void {
-    
+    sessionStorage.setItem("currentRoute","/home/defence");
   }
 
   constructor(

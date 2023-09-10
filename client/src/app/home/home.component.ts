@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit{
   ngOnInit(): void {
     this.href = this.router.url
     console.log(this.href)
+    sessionStorage.setItem("currentRoute","/home");
   }
   constructor(
     private router:Router

@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { Form, FormBuilder,FormControl, FormGroup,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpserviceService } from '../httpservice.service';
+import { HttpserviceService } from '../_services/httpservice.service';
 
 @Component({
   selector: 'app-register',

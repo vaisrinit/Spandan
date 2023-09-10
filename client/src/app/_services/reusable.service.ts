@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/internal/Subject';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReusableService {
-
+  private sessionStorage = new Subject<boolean>();
   constructor() { }
   // algorithm = 'aes-256-cbc';
   // key = "7efcfc483b004fabadd3d951f44decf7";//crypto.randomBytes(16);
@@ -24,4 +25,10 @@ export class ReusableService {
   //   decrypted = Buffer.concat([decrypted, decipher.final()]);
   //   return decrypted;
   // }
+  setItem(key: string, data: any) {
+    sessionStorage.setItem(key, data);
+    this.sessionStorage.next(true);
+}
+  storeSessionData(token:any){
+    this.setItem('token',token);}
 }

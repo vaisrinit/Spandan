@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { HttpserviceService } from 'src/app/httpservice.service';
+import { HttpserviceService } from 'src/app/_services/httpservice.service';
 
 @Component({
   selector: 'app-exercise',
@@ -14,7 +14,7 @@ export class ExerciseComponent implements OnInit {
   dataSource = new MatTableDataSource([]);;
   displayedColumns: string[] = ['name', 'type', 'force', 'troop', 'countries', 'place', 'start_date', 'end_date','link'];
   ngOnInit(): void {
-
+    sessionStorage.setItem("currentRoute","/home/defence/exercise");
   }
 
   constructor(public dialog: MatDialog,

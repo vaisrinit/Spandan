@@ -9,7 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpserviceService } from '../httpservice.service';
+import { HttpserviceService } from '../_services/httpservice.service';
 @NgModule({
   declarations: [
     LoginComponent

@@ -8,5 +8,5 @@ export const pgDbConfig = {
     idleTimeoutMillis: 30000,
 }
 
-export const JWT_SECRET_KEY = "de54d4132f14f91d4edb3910a85dddc922f4037998693d69832e794ba02b04f4";
+export const JWT_SECRET_KEY = require('crypto').randomBytes(32).toString('hex');
 
