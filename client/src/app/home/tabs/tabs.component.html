@@ -1,23 +1,23 @@
 <div fxLayout = "row" fxLayoutAlign = "space-around center" class="cards-div">
-    <mat-card class = "cards" (click)="redirectCurrentAffairs()">
+    <mat-card class = "cards" (click)="redirect('defence')">
         <mat-card-content fxLayoutAlign = "space-around center">
                 <mat-icon class="icons" fxLayoutAlign = "start">sports_kabaddi</mat-icon>
             <span style="font-size: 25px;font-weight: bold;">Defence</span>
         </mat-card-content>
     </mat-card>
-    <mat-card class = "cards" (click)="redirectCurrentAffairs()">
+    <mat-card class = "cards" (click)="redirect('politics')">
         <mat-card-content fxLayoutAlign = "space-around center">
                 <mat-icon class="icons" fxLayoutAlign = "start">campaign</mat-icon>
             <span style="font-size: 25px;font-weight: bold;">Politics</span>
         </mat-card-content>
     </mat-card>
-    <mat-card class = "cards" (click)="redirectCurrentAffairs()">
+    <mat-card class = "cards" (click)="redirect('defence')">
         <mat-card-content fxLayoutAlign = "space-around center">
                 <mat-icon class="icons" fxLayoutAlign = "start">auto_stories</mat-icon>
             <span style="font-size: 25px;font-weight: bold;">Books</span>
         </mat-card-content>
     </mat-card>
-    <mat-card class = "cards" (click)="redirectCurrentAffairs()">
+    <mat-card class = "cards" (click)="redirect('defence')">
         <mat-card-content fxLayoutAlign = "space-around center">
                 <mat-icon class="icons" fxLayoutAlign = "start">newspaper</mat-icon>
             <span style="font-size: 25px;font-weight: bold;">Current Affairs</span>
@@ -25,10 +25,16 @@
     </mat-card>
 </div>
 <div fxLayout = "row" fxLayoutAlign = "space-around center" class="cards-div">
-    <mat-card class = "cards" (click)="redirectSports()">
+    <mat-card class = "cards" (click)="redirect('sports')">
         <mat-card-content fxLayoutAlign = "space-around center">
                 <mat-icon class="icons" fxLayoutAlign = "start">sports_handball</mat-icon>
             <span style="font-size: 25px;font-weight: bold;">Sports</span>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class = "cards" (click)="redirect('fsdev')">
+        <mat-card-content fxLayoutAlign = "space-around center">
+                <mat-icon class="icons" fxLayoutAlign = "start">computer</mat-icon>
+            <span style="font-size: 25px;font-weight: bold;">FS Dev</span>
         </mat-card-content>
     </mat-card>
 </div>

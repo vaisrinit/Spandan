@@ -1,0 +1,57 @@
+<div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-label color="primary">Add Umpire</mat-label>
+    <mat-icon matTooltip="Close dialog" (click)="onClose()">cancel</mat-icon>
+</div>
+<mat-card>
+    <mat-card-content>
+        <!-- name,country,date_of_birth,gender -->
+        <form [formGroup]="form" fxLayout="column">
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Umpire Name</mat-label>
+                    <input id="ump_name" name="ump_name" matInput placeholder="Umpire Name" formControlName="ump_name"
+                        required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Country</mat-label>
+
+                    <mat-select formControlName="country">
+                        <mat-option *ngFor="let country of countries" [value]="country.name">
+                            {{country.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Gender</mat-label>
+                    <mat-select formControlName="gender">
+                        <mat-option *ngFor="let gender of genders" [value]="gender.name">
+                            {{gender.dispname}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Date of Birth</mat-label>
+                    <input formControlName="date_of_birth" matInput [matDatepicker]="picker1"
+                        [(ngModel)]="date_of_birth">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Official Type</mat-label>
+                    <mat-select formControlName="official">
+                        <mat-option *ngFor="let official of officials" [value]="official.value">
+                            {{official.dispname}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+        <button mat-raised-button color="accent">Cancel</button>
+        <button mat-raised-button color="primary" (click)="addMatchOfficials()">Add Umpire</button>
+    </mat-card-actions>
+</mat-card>

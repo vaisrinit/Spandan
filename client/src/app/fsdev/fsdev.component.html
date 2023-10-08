@@ -1,0 +1,43 @@
+<p>fsdev works!</p>
+{{title}}
+
+<p [id]="name" >Raju</p>
+
+<button (click)="openAlert()">Press Here</button>
+
+<div *ngIf = is_display>
+    <p>This is printed when true</p>
+</div>
+
+<div *ngIf = !is_display>
+    <p>This is printed when False</p>
+</div>
+<div>
+    <p *ngFor = "let detail of details">
+        {{detail.name}}
+        {{detail.age}}
+        {{detail.gender}}
+    </p>
+</div>
+
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Actions Buttons</mat-card-title>
+      <mat-card-subtitle>Start</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+  <br>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Actions Buttons</mat-card-title>
+    <mat-card-subtitle>End</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions align="end">
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>

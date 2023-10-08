@@ -1,0 +1,136 @@
+<div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-label color="primary">Add Batting Summary</mat-label>
+    <mat-icon matTooltip="Close dialog" (click)="onClose()">cancel</mat-icon>
+</div>
+<mat-card>
+    <mat-card-content>
+        <!-- ,,,,is_out,out_type,bowler,catcher,stumped_by,run_out_by -->
+        <form [formGroup]="form" fxLayout="column">
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-form-field appearance="outline">
+                    <mat-label>League</mat-label>
+                    <mat-select (selectionChange)="changeLeague($event.value)">
+                        <mat-option *ngFor="let league of leagues" [value]="league.id">
+                            {{league.edition_title}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Match</mat-label>
+                    <mat-select (selectionChange)="changeMatch($event.value)">
+                        <mat-option *ngFor="let fixture of fixtures" [value]="fixture.id">
+                            {{fixture.match_no}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Team</mat-label>
+                    <mat-select (selectionChange)="changeTeam($event.value)">
+                        <mat-option>All</mat-option>
+                        <mat-option *ngFor="let team of teams" [value]="team.id">
+                            {{team.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Player</mat-label>
+                    <mat-select (selectionChange)="changePlayer($event.value,'batter')">
+                        <mat-option [value]=null>All</mat-option>
+                        <mat-option *ngFor="let player of selected_players" [value]="player.id">
+                            {{player.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Runs Scored</mat-label>
+                    <input id="runs" name="runs" matInput placeholder="Runs Scored" formControlName="runs" type="number"
+                        required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Balls Faced</mat-label>
+                    <input id="balls" name="balls" matInput placeholder="Balls Faced" formControlName="balls"
+                        type="number" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Fours</mat-label>
+                    <input id="fours" name="fours" matInput placeholder="Fours" formControlName="fours" type="number"
+                        required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Sixes</mat-label>
+                    <input id="sixes" name="sixes" matInput placeholder="Sixes" formControlName="sixes" type="number"
+                        required>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Is Out</mat-label>
+                    <mat-select (selectionChange)="changeIsOut($event.value)">
+                        <mat-option [value]=null>All</mat-option>
+                        <mat-option *ngFor="let option of out_options" [value]="option.value">
+                            {{option.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+
+                    <mat-label>Out Type</mat-label>
+                    <mat-select (selectionChange)="changeOutType($event.value)">
+                        <mat-option [value]=null>All</mat-option>
+                        <mat-option *ngFor="let type of out_types" [value]="type.name">
+                            {{type.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Bowled By</mat-label>
+                    <mat-select (selectionChange)="changePlayer($event.value,'bowler')">
+                        <mat-option [value]=null>All</mat-option>
+                        <mat-option *ngFor="let player of unselected_players" [value]="player.id">
+                            {{player.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Catch By</mat-label>
+                    <mat-select (selectionChange)="changePlayer($event.value,'catcher')">
+                        <mat-option [value]=null>All</mat-option>
+                        <mat-option *ngFor="let player of unselected_players" [value]="player.id">
+                            {{player.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Stumped By</mat-label>
+                    <mat-select (selectionChange)="changePlayer($event.value,'stumping')">
+                        <mat-option [value]=null>All</mat-option>
+                        <mat-option *ngFor="let player of unselected_players" [value]="player.id">
+                            {{player.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Run Out By</mat-label>
+                    <mat-select (selectionChange)="changePlayer($event.value,'runout')">
+                        <mat-option [value]=null>All</mat-option>
+                        <mat-option *ngFor="let player of unselected_players" [value]="player.id">
+                            {{player.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="addLPlayerBattingDetails()">Add Player</button>
+            </div>
+        </form>
+        <div>
+            <p *ngFor='let details of dataSource'>{{details.player_no}}</p>
+        </div>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+        <button mat-raised-button color="accent">Cancel</button>
+        <button mat-raised-button color="primary" (click)="addBattingDetails()">Add Bat Det.</button>
+    </mat-card-actions>
+</mat-card>

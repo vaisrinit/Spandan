@@ -1,0 +1,51 @@
+<div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-label color="primary">Add League</mat-label>
+    <mat-icon matTooltip="Close dialog" (click)="onClose()">cancel</mat-icon>
+</div>
+<mat-card>
+    <mat-card-content>
+        <!-- name,type,administrator,format -->
+        <form [formGroup]="form" fxLayout="column">
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-form-field appearance="outline">
+                    <mat-label>League Name</mat-label>
+                    <input id="league_name" name="league_name" matInput placeholder="League Name"
+                        formControlName="league_name" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Edition Title</mat-label>
+                    <input id="edition_title" name="edition_title" matInput placeholder="Edition Title"
+                        formControlName="edition_title" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>League Type</mat-label>
+
+                    <mat-select formControlName="type">
+                        <mat-option *ngFor="let type of types" [value]="type.name">
+                            {{type.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Format</mat-label>
+                    <mat-select formControlName="format">
+                        <mat-option *ngFor="let format of formats" [value]="format.name">
+                            {{format.dispname}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Administrator</mat-label>
+                    <input id="league_admin" name="league_admin" matInput placeholder="Administrator"
+                        formControlName="league_admin" required>
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+        <button mat-raised-button color="accent">Cancel</button>
+        <button mat-raised-button color="primary" (click)="addLeagueDetails()">Add League</button>
+    </mat-card-actions>
+</mat-card>

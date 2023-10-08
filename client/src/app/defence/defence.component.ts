@@ -21,8 +21,6 @@ export class DefenceComponent implements OnInit{
   }
 
   async redirectExercise(){
-    let result = await this.http.getUsers();
-    console.log(result);
     this.router.navigate(["home/defence/exercise"]);
   }
   redirectCurrentAffairs(){

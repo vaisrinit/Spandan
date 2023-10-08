@@ -3,10 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { SportsComponent } from './sports.component';
 
 const routes: Routes = [
-  {
-    path:"",
-    component:SportsComponent
-  }
+  {path:"",component:SportsComponent},
+  {path:"cricket",loadChildren : ()=>import('./cricket/cricket.module').then(m=>m.CricketModule)}
 ];
 
 @NgModule({

@@ -93,5 +93,205 @@ export class UserController {
             return { success: true, message: result?.message };
         }
     }
+    
+    async addVenueDetails(param:any) {
+        let result = await usrDb.addVenueDetails(param);
+        if (result?.success) {
+            return { success: true, rowCount: result.rowCount, rows: result.rows };
+        }
+        else {
+            if (result?.connection_error) cmnCntrl.getIsDBConnected();
+            return { success: true, message: result?.message };
+        }
+    }
 
+    async editVenueDetails(param:any) {
+        let result = await usrDb.editVenueDetails(param);
+        if (result?.success) {
+            return { success: true, rowCount: result.rowCount, rows: result.rows };
+        }
+        else {
+            if (result?.connection_error) cmnCntrl.getIsDBConnected();
+            return { success: true, message: result?.message };
+        }
+    }
+
+    async getVenueDetails() {
+        let result = await usrDb.getVenueDetails();
+        if (result?.success) {
+            return { success: true, rowCount: result.rowCount, rows: result.rows };
+        }
+        else {
+            if (result?.connection_error) cmnCntrl.getIsDBConnected();
+            return { success: true, message: result?.message };
+        }
+    }
+
+    async addLeagueDetails(param:any) {
+        let result = await usrDb.addLeagueDetails(param);
+        if (result?.success) {
+            return { success: true, rowCount: result.rowCount, rows: result.rows };
+        }
+        else {
+            if (result?.connection_error) cmnCntrl.getIsDBConnected();
+            return { success: true, message: result?.message };
+        }
+    }
+
+    async getLeagueDetails() {
+        let result = await usrDb.getLeagueDetails();
+        if (result?.success) {
+            return { success: true, rowCount: result.rowCount, rows: result.rows };
+        }
+        else {
+            if (result?.connection_error) cmnCntrl.getIsDBConnected();
+            return { success: true, message: result?.message };
+        }
+    }
+
+    async addTeamDetails(param:any) {
+        let result = await usrDb.addTeamDetails(param);
+        if (result?.success) {
+            return { success: true, rowCount: result.rowCount, rows: result.rows };
+        }
+        else {
+            if (result?.connection_error) cmnCntrl.getIsDBConnected();
+            return { success: true, message: result?.message };
+        }
+    }
+
+    async getTeamDetails() {
+        let result = await usrDb.getTeamDetails();
+        if (result?.success) {
+            return { success: true, rowCount: result.rowCount, rows: result.rows };
+        }
+        else {
+            if (result?.connection_error) cmnCntrl.getIsDBConnected();
+            return { success: true, message: result?.message };
+        }
+    }
+
+    async addMatchOfficials(param:any) {
+        let result = await usrDb.addMatchOfficials(param);
+        if (result?.success) {
+            return { success: true, rowCount: result.rowCount, rows: result.rows };
+        }
+        else {
+            if (result?.connection_error) cmnCntrl.getIsDBConnected();
+            return { success: true, message: result?.message };
+        }
+    }
+
+    async getMatchOfficials() {
+        let result = await usrDb.getMatchOfficials();
+        if (result?.success) {
+            return { success: true, rowCount: result.rowCount, rows: result.rows };
+        }
+        else {
+            if (result?.connection_error) cmnCntrl.getIsDBConnected();
+            return { success: true, message: result?.message };
+        }
+    }
+
+    async addMatchSummary(param:any) {
+        let result = await usrDb.addMatchSummary(param);
+        if (result?.success) {
+            return { success: true, rowCount: result.rowCount, rows: result.rows };
+        }
+        else {
+            if (result?.connection_error) cmnCntrl.getIsDBConnected();
+            return { success: true, message: result?.message };
+        }
+    }
+
+    async getMatchSummary(param:any) {
+        let result = await usrDb.getMatchSummary(param);
+        if (result?.success) {
+            return { success: true, rowCount: result.rowCount, rows: result.rows };
+        }
+        else {
+            if (result?.connection_error) cmnCntrl.getIsDBConnected();
+            return { success: true, message: result?.message };
+        }
+    }
+
+    async getFixtureDetails(param:any) {
+        let result = await usrDb.getFixtureDetails(param);
+        if (result?.success) {
+            return { success: true, rowCount: result.rowCount, rows: result.rows };
+        }
+        else {
+            if (result?.connection_error) cmnCntrl.getIsDBConnected();
+            return { success: true, message: result?.message };
+        }
+    }
+    
+    async getTeamsPlaying(param:any) {
+        let result = await usrDb.getTeamsPlaying(param);
+        if (result?.success) {
+            return { success: true, rowCount: result.rowCount, rows: result.rows };
+        }
+        else {
+            if (result?.connection_error) cmnCntrl.getIsDBConnected();
+            return { success: true, message: result?.message };
+        }
+    }
+
+    async getPlayersForMatch(param:any) {
+        let result = await usrDb.getPlayersForMatch(param);
+        if (result?.success) {
+            return { success: true, rowCount: result.rowCount, rows: result.rows };
+        }
+        else {
+            if (result?.connection_error) cmnCntrl.getIsDBConnected();
+            return { success: true, message: result?.message };
+        }
+    }
+    
+    async addBattingDetails(param:any) {
+        
+        let result = await usrDb.addBattingDetails(param);
+        if (result?.success) {
+            return { success: true, rowCount: result.rowCount, rows: result.rows };
+        }
+        else {
+            if (result?.connection_error) cmnCntrl.getIsDBConnected();
+            return { success: true, message: result?.message };
+        }
+    }
+    
+    async addBowlingDetails(param:any) {
+        
+        let result = await usrDb.addBowlingDetails(param);
+        if (result?.success) {
+            return { success: true, rowCount: result.rowCount, rows: result.rows };
+        }
+        else {
+            if (result?.connection_error) cmnCntrl.getIsDBConnected();
+            return { success: true, message: result?.message };
+        }
+    }
+    async getBattingSummary(param:any) {
+        
+        let result = await usrDb.getBattingSummary(param);
+        if (result?.success) {
+            return { success: true, rowCount: result.rowCount, rows: result.rows };
+        }
+        else {
+            if (result?.connection_error) cmnCntrl.getIsDBConnected();
+            return { success: true, message: result?.message };
+        }
+    }
+
+    async getBowlingSummary(param:any) {
+        
+        let result = await usrDb.getBowlingSummary(param);
+        if (result?.success) {
+            return { success: true, rowCount: result.rowCount, rows: result.rows };
+        }
+        else {
+            if (result?.connection_error) cmnCntrl.getIsDBConnected();
+            return { success: true, message: result?.message };
+        }
+    }
 }

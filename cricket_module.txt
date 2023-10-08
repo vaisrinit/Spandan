@@ -1,0 +1,31 @@
+Leagues
+	Screen to add Playing 11 of the match
+	Screen to add Match Summary
+	Screen to add Batting Details
+		Show Added details iside a table
+	Screen to add Bowling Details
+		Show Added details iside a table
+	Screen to Display Stats to any level
+	Screen to Disply Points Table
+		To Be Done
+	
+
+Settings
+	Screen to add Umpire
+	Screen to add Venue
+		Add Ends of the Stadium
+	Screen to add League
+	Screen to add Teams
+	Screem to Add a Match
+		Show Fixtures
+	Screen to Show Players from Different teams
+	
+General Changes
+	Add League Selection dropdown
+	Add Sorting of Table
+	Filtering on table
+	Add Edit Screen
+	Add delete button
+	Add table level scrollable
+	A dialog box scrollable
+	Date showing the previous day

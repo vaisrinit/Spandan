@@ -1,0 +1,66 @@
+<div style="padding:1%;" fxLayout="row" fxLayoutAlign="space-between end">
+  <span style="font-size: large;font-weight: bold;">Venue Details</span>
+  <button mat-mini-fab color="primary" (click)="openDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+<div style="padding: 2%;">
+  <!-- 'name','city','state','country','capacity','owner' -->
+  <mat-form-field >
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
+  </mat-form-field>
+  <section class="table-container mat-elevation-z8">
+    
+    <table mat-table [dataSource]="dataSource" matSort >
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Stadium Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> City </th>
+        <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> State </th>
+        <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+      </ng-container>
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Country </th>
+        <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+      </ng-container>
+      <ng-container matColumnDef="capacity">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Capacity </th>
+        <td mat-cell *matCellDef="let element"> {{element.capacity}} </td>
+      </ng-container>
+      <ng-container matColumnDef="owner">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Stadium Owner </th>
+        <td mat-cell *matCellDef="let element"> {{element.owner}} </td>
+      </ng-container>
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef style="width:1%"> Edit </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-mini-fab color="primary" (click)="openEditDialog(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="delete" >
+        <th mat-header-cell *matHeaderCellDef style="width:1%"> Delete </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-mini-fab color="warn" (click)="openEditDialog(element)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </section>
+  <mat-paginator [pageSizeOptions]="[6]" showFirstLastButtons></mat-paginator>
+
+</div>

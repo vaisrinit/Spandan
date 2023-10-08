@@ -17,7 +17,8 @@ export class ExerciseComponent implements OnInit {
     sessionStorage.setItem("currentRoute","/home/defence/exercise");
   }
 
-  constructor(public dialog: MatDialog,
+  constructor(
+    public dialog: MatDialog,
     private http: HttpserviceService,
   ) {
     this.getExerciseDetails()
@@ -162,10 +163,8 @@ export class AddDefenceExerciseDialog implements OnInit {
       start_date: this.ex_start_date,
       end_date: this.ex_end_date
     };
-    console.log(exercise)
     let result = await this.http.addExerciseDetails(exercise);
     if (result.success) {
-      console.log(result);
       this.dialogRef.close();
     }
     // const usr = {data:this.authService.encrypt(JSON.stringify(user))};

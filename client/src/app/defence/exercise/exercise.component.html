@@ -4,12 +4,12 @@
         <mat-icon>add</mat-icon>
     </button>
 </div>
-<div style="padding: 2%;">
+<div style="padding: 2%;" class="style-table">
     <table mat-table [dataSource]="dataSource" >
 
       <!-- 'name', 'type', 'force', 'troop','countries','place','description','link','start_date','end_date' -->
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Ex Name </th>
+          <th mat-header-cell *matHeaderCellDef> Exercise Name </th>
           <td mat-cell *matCellDef="let element" style ="width: 10%;"> {{element.name}} </td>
         </ng-container>
       

@@ -11,6 +11,7 @@ ng serve
 ng g service reusable
 	For Creating service
 ng generate guard _guards/auth
+ng generate environments
 	
 Backend
 create tsserver inside project folder

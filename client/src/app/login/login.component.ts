@@ -57,13 +57,11 @@ export class LoginComponent implements OnInit{
 				this.router.navigate(['home/defence']);
 			break;
 			default:
-				console.log("inside home");
 				this.router.navigate(['home']);
 		}
 	}
   
   async login(){
-    console.log(this.form.value);
     let param:any = {
       email:this.form.value.username,
       password:this.form.value.password
@@ -71,15 +69,12 @@ export class LoginComponent implements OnInit{
     // let result = await this.http.login(this.reusable.encrypt(Buffer.from(JSON.parse(param),"base64")));
     let result = await this.http.login(param);
     if(result.success){
-      console.log(result);
       // localStorage.setItem("token",result.rows[0].token);
       this.reusable.storeSessionData(result.rows[0].token);
       this.home();
       if (this.returnUrl){
-				console.log("successfully logged in");
 				this.router.navigate([this.returnUrl]);
 			} else {
-				console.log("successfully logged in");
 				this.navigation();
 			}
     }

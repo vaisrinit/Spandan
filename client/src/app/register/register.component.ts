@@ -39,7 +39,6 @@ export class RegisterComponent implements OnInit{
   }
 
   async register(){
-    // console.log(this.form.value);
     let param = {
       email:this.form.value.email,
       name:this.form.value.name,

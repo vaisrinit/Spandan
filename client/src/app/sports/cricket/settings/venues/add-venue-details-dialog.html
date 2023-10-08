@@ -1,0 +1,75 @@
+<div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-label color="primary">Add Venue</mat-label>
+    <mat-icon matTooltip="Close dialog" (click)="onClose()">cancel</mat-icon>
+</div>
+<mat-card>
+    <mat-card-content>
+        <!-- name,city,state,country,owner,capacity,lat,long-->
+        <form [formGroup]="form" fxLayout="column">
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Venue Name</mat-label>
+                    <input id="ven_name" name="ven_name" matInput placeholder="Venue Name" formControlName="ven_name"
+                        required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Venue City</mat-label>
+                    <input id="ven_city" name="ven_city" matInput placeholder="Venue City" formControlName="ven_city"
+                        required>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Venue State</mat-label>
+                    <input id="ven_state" name="ven_state" matInput placeholder="Venue State" formControlName="ven_state"
+                        required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Venue Country</mat-label>
+                    <input id="ven_country" name="ven_country" matInput placeholder="Venue Country" formControlName="ven_country"
+                        required>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Owner</mat-label>
+                    <input id="ven_owner" name="ven_owner" matInput placeholder="Venue Owner" formControlName="ven_owner"
+                        required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Venue Capacity</mat-label>
+                    <input id="ven_capacity" name="ven_capacity" matInput placeholder="Venue Capacity" formControlName="ven_capacity"
+                        required>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-form-field appearance="outline">
+                    <mat-label>End 1</mat-label>
+                    <input id="end_1" name="end_1" matInput placeholder="End 1" formControlName="end_1"
+                        required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>End 2</mat-label>
+                    <input id="end_2" name="end_2" matInput placeholder="End 2" formControlName="end_2"
+                        required>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Latitude</mat-label>
+                    <input id="latitude" name="latitude" matInput placeholder="Latitude" formControlName="latitude"
+                        required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Longitude</mat-label>
+                    <input id="longitude" name="longitude" matInput placeholder="Longitude" formControlName="longitude"
+                        required>
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+        <button mat-raised-button color="accent">Cancel</button>
+        <button mat-raised-button color="primary" (click)="addVenueDetails()">Add Venue</button>
+    </mat-card-actions>
+</mat-card>

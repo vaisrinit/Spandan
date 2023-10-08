@@ -1,0 +1,18 @@
+<div fxLayout = "row" fxLayoutAlign = "space-around center" class="cards-div">
+    
+    <mat-card class = "cards" (click)="redirect('leagues')">
+        <mat-card-content fxLayoutAlign = "space-around center">
+                <mat-icon class="icons" fxLayoutAlign = "start">sports_kabaddi</mat-icon>
+            <span style="font-size: 25px;font-weight: bold;">Leagues</span>
+        </mat-card-content>
+    </mat-card>
+    
+    <mat-card class = "cards" (click)="redirect('settings')">
+        <mat-card-content fxLayoutAlign = "space-around center">
+                <mat-icon class="icons" fxLayoutAlign = "start">campaign</mat-icon>
+            <span style="font-size: 25px;font-weight: bold;">General Setttings</span>
+        </mat-card-content>
+    </mat-card>
+    <!-- (click)="redirect('cricket')" -->
+    
+</div>

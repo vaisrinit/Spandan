@@ -18,13 +18,7 @@ export class TabsComponent implements OnInit{
 
   }
 
-  redirectDefence(){
-    this.router.navigate(["home/defence"]);
-  }
-  redirectCurrentAffairs(){
-    this.router.navigate(["home/defence"]);
-  }
-  redirectSports(){
-    this.router.navigate(["home/sports"]);
+  redirect(route:string){
+    this.router.navigate(["home/"+route]);
   }
 }

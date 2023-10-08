@@ -4,11 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { NotauthGuard } from './_guards/notauth.guard';
 import { AuthGuard } from './_guards/auth.guard';
 const routes: Routes = [
-  {
-    path:'',
-    canActivate:[NotauthGuard],
-    component:LoginComponent
-  },
+  
   {
     path:'login',
     canActivate:[NotauthGuard],
@@ -23,6 +19,11 @@ const routes: Routes = [
     path:'register',
     canActivate:[NotauthGuard],
     loadChildren : ()=>import('./register/register.module').then(m=>m.RegisterModule)
+  },
+  {
+    path:'**',
+    canActivate:[NotauthGuard],
+    component:LoginComponent
   },
 ];
 
