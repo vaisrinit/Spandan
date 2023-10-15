@@ -147,6 +147,13 @@ export class UsersDbQry {
     async getBowlingSummary(param:any) {
         const qryText = "select sum(wickets) wickets,cp.name player_name,ct.name team_name from sports.bowling_details bowld join sports.cricket_players cp on cp.id = bowld.player_id join sports.cricket_teams ct on cp.international_team_id = ct.id join sports.cricket_fixtures cf on cf.id = bowld.match_id where cf.league_id = $1 group by cp.name,ct.name order by wickets desc;";
         const qryParam = [param.league_id];
-        return fnDbQuery("getBattingSummary", qryText, qryParam);
+        return fnDbQuery("getBowlingSummary", qryText, qryParam);
     }
+
+    async getFixtures(param:any) {
+        const qryText = "select match_no,ct1.name team_1,ct2.name team_2,cv.name venue,cf.match_date,cf.start_time from sports.cricket_fixtures cf join sports.cricket_teams ct1 on cf.team_1 = ct1.id join sports.cricket_teams ct2 on cf.team_2 = ct2.id join sports.cricket_venues cv on cv.id = cf.venue where cf.league_id = $1;";
+        const qryParam = [param.league_id];
+        return fnDbQuery("getFixtures", qryText, qryParam);
+    }
+    
 }

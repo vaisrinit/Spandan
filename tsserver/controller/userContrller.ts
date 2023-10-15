@@ -294,4 +294,16 @@ export class UserController {
             return { success: true, message: result?.message };
         }
     }
+
+    async getFixtures(param:any) {
+        
+        let result = await usrDb.getFixtures(param);
+        if (result?.success) {
+            return { success: true, rowCount: result.rowCount, rows: result.rows };
+        }
+        else {
+            if (result?.connection_error) cmnCntrl.getIsDBConnected();
+            return { success: true, message: result?.message };
+        }
+    }
 }

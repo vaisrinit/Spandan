@@ -24,6 +24,8 @@ tsc --init
 tslint --init
 npm install jsonwebtoken
 npm i --save-dev @types/jsonwebtoken
+npm install typescript @types/node express ts-node ts-node-dev tslint webpack webpack-cli ts-loader --save-dev
+npm install webpack-node-externals --save-dev
 
 npm install <package-name> --save-dev
 	for devDependencies

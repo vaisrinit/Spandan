@@ -100,4 +100,8 @@ export class HttpserviceService {
   async getBowlingSummary(data:any) {
     return lastValueFrom(this.http.post<any>(this.domain+'/api/getBowlingSummary',data));
   }
+
+  async getFixtures(data:any) {
+    return lastValueFrom(this.http.post<any>(this.domain+'/api/getFixtures',data));
+  }
 }

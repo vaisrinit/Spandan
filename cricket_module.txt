@@ -1,31 +1,32 @@
 Leagues
-	Screen to add Playing 11 of the match
-	Screen to add Match Summary
+	Screen to add Playing 11 of the match	TBD
+	Screen to add Match Summary		done
 	Screen to add Batting Details
-		Show Added details iside a table
+		Show Added details inside a table	TBD
 	Screen to add Bowling Details
-		Show Added details iside a table
-	Screen to Display Stats to any level
-	Screen to Disply Points Table
-		To Be Done
-	
+		Show Added details inide a table	done
+	Screen to Display Stats to any level	TBD
+	Screen to Disply Points Table		TBD
 
 Settings
-	Screen to add Umpire
-	Screen to add Venue
-		Add Ends of the Stadium
-	Screen to add League
-	Screen to add Teams
-	Screem to Add a Match
-		Show Fixtures
+	Screen to add Umpire	done
+	Screen to add Venue		done
+		Add Ends of the Stadium	done
+	Screen to add League	done
+	Screen to add Teams		done
+	Screem to Add a Match	done
+		Show Fixtures	done
 	Screen to Show Players from Different teams
 	
+08-10-2023
 General Changes
-	Add League Selection dropdown
-	Add Sorting of Table
-	Filtering on table
-	Add Edit Screen
-	Add delete button
-	Add table level scrollable
-	A dialog box scrollable
-	Date showing the previous day
+	Add League Selection dropdown	done
+	Add Sorting of Table	done
+	Filtering on table	done
+	Add Edit Screen		done
+	Add delete button	done
+	Add table level scrollable	done
+	A dialog box scrollable	
+	Date showing the previous day done
+
+14-10-2023

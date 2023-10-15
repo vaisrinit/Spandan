@@ -424,3 +424,20 @@ router.post('/getBowlingSummary', async (req: any, res) => {
     }
 
 })
+
+router.post('/getFixtures', async (req: any, res) => {
+    try {
+        if (cmnCntrl.getIsDBConnected()) {
+            let result = await usrCntrl.getFixtures(req.body);
+            if (result?.success) res.status(200).json(result);
+            else res.status(400).json(result);
+        }
+        else {
+            res.status(501).json({ success: false, message: 'DB Connction failure,try after some time' });
+        }
+    }
+    catch (err: any) {
+        res.json({ success: false, error: true, message: err.stack });
+    }
+
+})
