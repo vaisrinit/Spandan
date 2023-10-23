@@ -289,3 +289,73 @@ create table sports.bowling_details(
 	created_at timestamptz default now(),
 	edited_at timestamptz default now()
 );
+
+create table politics.eci_states(
+	stateId int,
+	statecode varchar primary key,
+	countryCd varchar not null,
+	stateType varchar not null,
+	stateName varchar not null,
+	stateNameHindi varchar not null,
+	effectiveFrom date not null,
+	effectiveTo date not null,
+	isActive varchar not null,
+	createdDttm timestamptz,
+	modifiedBy varchar,
+	modifiedDttm varchar,
+	created_at timestamptz default now()
+);
+create table politics.eci_districts(
+	state varchar references politics.eci_states(statecode),
+	districtNo varchar,
+	districtValue varchar,
+	districtValueHindi varchar,
+	effectiveFrom varchar,
+	effectiveTo varchar,
+	isActive varchar,
+	createdBy varchar,
+	createdDttm varchar,
+	modifiedBy varchar,
+	modifiedDttm varchar,
+	districtCd varchar primary key,
+	created_at timestamptz default now()
+);
+
+create table politics.eci_assemblies(
+	asmblyNo int,
+	stateCd varchar references politics.eci_states(statecode),
+	districtCd varchar references politics.eci_districts(districtCd),
+	asmblyName varchar,
+	category varchar,
+	asmblyNameL1 varchar,
+	asmblyNameL2 varchar,
+	categoryL1 varchar,
+	categoryl2 varchar,
+	effectiveFrom varchar,
+	effectiveTo varchar,
+	isActive varchar,
+	createdBy varchar,
+	createdDttm varchar,
+	modifiedBy varchar,
+	modifiedDttm varchar,
+	languagePneumonicL1 varchar,
+	languagePneumonicL2 varchar,
+	pcNo varchar,
+	prlmntNameL1 varchar,
+	prlmntNameL2 varchar,
+	prlmntCategoryL1 varchar,
+	prlmntCategoryL2 varchar,
+	acId int,
+	created_at timestamptz default now()
+);
+
+create table politics.eci_parts(
+	id serial primary key,
+	partId int ,
+	stateCd varchar references politics.eci_states(statecode),
+	districtCd varchar references politics.eci_districts(districtCd),
+	acNumber int,
+	partNumber int,
+	partName varchar,
+	created_at timestamptz default now()
+);

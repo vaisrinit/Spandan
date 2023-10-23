@@ -54,7 +54,6 @@ export class TeamsComponent implements OnInit{
 
 
   applyFilter(event: Event) {
-    console.log(event)
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 }
@@ -166,7 +165,6 @@ export class EditTeamDetailsDialogComponent implements OnInit{
   ngOnInit(): void {
     this.getLeagueDetails();
     this.setFormValue();
-    console.log(this.data)
     this.selected_league = this.data.id
   }
 
@@ -217,7 +215,6 @@ export class EditTeamDetailsDialogComponent implements OnInit{
       owner: this.form?.get('team_owner')?.value,
       league: this.form?.get('league')?.value,
     };
-    console.log(team);
     // let result = await this.http.addTeamDetails(team);
     // if (result.success) {
     //   this.dialogRef.close();

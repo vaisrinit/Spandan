@@ -1,5 +1,7 @@
 import {CommonDBQry} from '../model/common_db'
 import { randomBytes,createCipheriv,createDecipheriv } from 'crypto';
+import { verify } from 'jsonwebtoken';
+import { JWT_SECRET_KEY } from '../config/config';
 
 const commonCntrl = new CommonDBQry();
 let isDBConnected = false;
@@ -48,5 +50,14 @@ export class CommonCntrl {
         let decrypted = decipher.update(encryptedText);
         decrypted = Buffer.concat([decrypted, decipher.final()]);
         return decrypted;
+    }
+    async validateToken(token: any) {
+        try {
+            const decoded = verify(token, JWT_SECRET_KEY)
+            return { success: true, decoded: decoded }
+        }
+        catch {
+            return { success: false, message: "Token Invalid" }
+        }
     }
 }

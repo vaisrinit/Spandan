@@ -41,7 +41,6 @@ export class UmpiresComponent {
   }
 
   applyFilter(event: Event) {
-    console.log(event)
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 }
@@ -143,7 +142,6 @@ export class AddUmpireDetailsDialogComponent implements OnInit{
       date_of_birth: new Date(this.date_of_birth).getFullYear().toString()+"-"+((new Date(this.date_of_birth).getMonth())+1).toString()+"-"+new Date(this.date_of_birth).getDate().toString(),
       is_umpire:this.form?.get('official')?.value,
     };
-    console.log(umpire)
     let result = await this.http.addMatchOfficials(umpire);
     if (result.success) {
       this.dialogRef.close();

@@ -66,10 +66,11 @@ export class LoginComponent implements OnInit{
       email:this.form.value.username,
       password:this.form.value.password
     };
-    // let result = await this.http.login(this.reusable.encrypt(Buffer.from(JSON.parse(param),"base64")));
-    let result = await this.http.login(param);
+    let result = await this.http.login({data:this.reusable.encrypt(JSON.stringify(param))});
+    // let result = await this.http.login(param);
     if(result.success){
-      // localStorage.setItem("token",result.rows[0].token);
+      result.rows = JSON.parse(this.reusable.decrypt(result.rows));
+      localStorage.setItem("token",result.rows[0].token);
       this.reusable.storeSessionData(result.rows[0].token);
       this.home();
       if (this.returnUrl){

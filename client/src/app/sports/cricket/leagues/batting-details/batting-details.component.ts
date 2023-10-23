@@ -49,7 +49,6 @@ export class BattingDetailsComponent implements OnInit {
   }
 
   applyFilter(event: Event) {
-    console.log(event)
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
@@ -114,13 +113,6 @@ export class AddBattingDetailsDialog implements OnInit {
   selected_format = null;
   selected_type = null;
   selected_match = null;
-  selected_player = null;
-  is_out = null;
-  selected_out_type = null;
-  selected_bowler = null;
-  selected_catcher = null;
-  selected_run_out = null;
-  selected_wk = null;
   selected_team = null;
 
 
@@ -156,6 +148,23 @@ export class AddBattingDetailsDialog implements OnInit {
       sixes: ['', Validators.compose([
         Validators.required,
       ])],
+      match: ['', Validators.compose([
+        Validators.required,
+      ])],
+      team: ['', Validators.compose([
+        Validators.required,
+      ])],
+      batter: ['', Validators.compose([
+        Validators.required,
+      ])],
+      bowler: [''],
+      catcher: [''],
+      stumping: [''],
+      runout: [''],
+      outType: [''],
+      isOut: ['', Validators.compose([
+        Validators.required,
+      ])],
     },
     );
   }
@@ -173,49 +182,48 @@ export class AddBattingDetailsDialog implements OnInit {
     this.selected_players = this.players.filter((e) => e.international_team_id == team)
     this.unselected_players = this.players.filter((e) => e.international_team_id != team)
   }
-  changePlayer(id: any, player: any) {
-    if (player == 'batter')
-      this.selected_player = id;
-    else if (player == 'bowler')
-      this.selected_bowler = id;
-    else if (player == 'catcher')
-      this.selected_catcher = id;
-    else if (player == 'stumping')
-      this.selected_wk = id;
-    else if (player == 'runout')
-      this.selected_run_out = id;
-  }
-  changeOutType(type: any) {
-    this.selected_out_type = type;
-  }
-  changeIsOut(out: any) {
-    this.is_out = out;
-  }
+  
   addLPlayerBattingDetails() {
     let player_bat_det = {
-      match_no: this.selected_match,
-      player_no: this.selected_player,
+      match_no: this.form?.get('match')?.value,
+      player_no: this.form?.get('batter')?.value,
       runs: this.form?.get('runs')?.value,
       balls: this.form?.get('balls')?.value,
       fours: this.form?.get('fours')?.value,
       sixes: this.form?.get('sixes')?.value,
-      is_out: this.is_out,
-      out_type: this.selected_out_type,
-      bowled_by: this.selected_bowler,
-      catch_by: this.selected_catcher,
-      run_out_by: this.selected_run_out,
-      stumped_by: this.selected_wk
+      is_out: this.form?.get('isOut')?.value,
+      out_type: this.form?.get('outType')?.value,
+      bowled_by: this.form?.get('bowler')?.value,
+      catch_by: this.form?.get('catcher')?.value,
+      run_out_by: this.form?.get('runout')?.value,
+      stumped_by: this.form?.get('stumping')?.value
+    }
+    if(player_bat_det.bowled_by==''){
+      player_bat_det.bowled_by = null
+    }
+    if(player_bat_det.catch_by==''){
+      player_bat_det.catch_by = null
+    }
+    if(player_bat_det.run_out_by==''){
+      player_bat_det.run_out_by = null
+    }
+    if(player_bat_det.stumped_by==''){
+      player_bat_det.stumped_by = null
     }
     this.dataSource.push(player_bat_det);
-    console.log(this.dataSource)
-    this.selected_player = null
-    this.is_out = null
-    this.selected_out_type = null
-    this.selected_bowler = null
-    this.selected_catcher = null
-    this.selected_run_out = null
-    this.selected_wk = null
-    this.form.reset();
+    this.form?.get('player_no')?.reset();
+    this.form?.get('runs')?.reset();
+    this.form?.get('balls')?.reset();
+    this.form?.get('fours')?.reset();
+    this.form?.get('sixes')?.reset();
+    this.form?.get('isOut')?.reset();
+    this.form?.get('outType')?.reset();
+    this.form?.get('bowler')?.reset();
+    this.form?.get('catcher')?.reset();
+    this.form?.get('runout')?.reset();
+    this.form?.get('stumping')?.reset();
+
+
   }
 
 
@@ -235,6 +243,7 @@ export class AddBattingDetailsDialog implements OnInit {
   }
 
   async addBattingDetails() {
+    // console.log(this.dataSource)
     let result = await this.http.addBattingDetails(this.dataSource);
     if (result.success) {
       this.dialogRef.close();
@@ -248,7 +257,6 @@ export class AddBattingDetailsDialog implements OnInit {
     if (result.success) {
       this.teams = result.rows;
       let param2 = { team1: result.rows[0].id, team2: result.rows[1].id, league: result.rows[0].league }
-      console.log(param2)
       let result2 = await this.http.getPlayersForMatch(param2);
       if (result2.success) {
         this.players = result2.rows;

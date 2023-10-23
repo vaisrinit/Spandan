@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormControl } 
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { HttpserviceService } from 'src/app/_services/httpservice.service';
+import { ReusableService } from 'src/app/_services/reusable.service';
 
 @Component({
   selector: 'app-exercise',
@@ -12,14 +13,16 @@ import { HttpserviceService } from 'src/app/_services/httpservice.service';
 export class ExerciseComponent implements OnInit {
 
   dataSource = new MatTableDataSource([]);;
-  displayedColumns: string[] = ['name', 'type', 'force', 'troop', 'countries', 'place', 'start_date', 'end_date','link'];
+  displayedColumns: string[] = ['name', 'type', 'force', 'troop', 'countries', 'place', 'start_date', 'end_date', 'link'];
   ngOnInit(): void {
-    sessionStorage.setItem("currentRoute","/home/defence/exercise");
+    sessionStorage.setItem("currentRoute", "/home/defence/exercise");
   }
 
   constructor(
     public dialog: MatDialog,
     private http: HttpserviceService,
+    private reusable: ReusableService,
+
   ) {
     this.getExerciseDetails()
 
@@ -27,6 +30,7 @@ export class ExerciseComponent implements OnInit {
 
   async getExerciseDetails() {
     let result = await this.http.getExerciseDetails();
+    result.rows = JSON.parse(this.reusable.decrypt(result.rows));
     if (result.success) {
       this.dataSource = new MatTableDataSource(result.rows);
     }
@@ -36,9 +40,9 @@ export class ExerciseComponent implements OnInit {
       width: '50%',
     });
     dialogRef.afterClosed().subscribe(result => {
-        this.getExerciseDetails();
+      this.getExerciseDetails();
     });
-    
+
   }
 
 
@@ -97,6 +101,7 @@ export class AddDefenceExerciseDialog implements OnInit {
     public dialogRef: MatDialogRef<AddDefenceExerciseDialog>,
     private formBuilder: FormBuilder,
     private http: HttpserviceService,
+    private reusable:ReusableService,
 
   ) {
     this.createForm();
@@ -163,7 +168,7 @@ export class AddDefenceExerciseDialog implements OnInit {
       start_date: this.ex_start_date,
       end_date: this.ex_end_date
     };
-    let result = await this.http.addExerciseDetails(exercise);
+    let result = await this.http.addExerciseDetails({data:this.reusable.encrypt(JSON.stringify(exercise))});
     if (result.success) {
       this.dialogRef.close();
     }

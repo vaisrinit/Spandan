@@ -13,7 +13,7 @@ export const pgDbConfig = {
 
 export const JWT_SECRET_KEY = require('crypto').randomBytes(32).toString('hex');
 
-const keyEncryptDecrypt =  '5c88acf79eecbc7841@ar$tyudchtd^h';
+const keyEncryptDecrypt =  '7efcfc483b004fabadd3d951f44decf7';
 const IV_LENGTH = 16; // For AES, this is always 16
 
 export function encrypt(text:any) {

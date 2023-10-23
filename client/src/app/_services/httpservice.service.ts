@@ -22,86 +22,83 @@ export class HttpserviceService {
   logout() {
     sessionStorage.clear();
 }
-
+//user apis
   async register(data: any) {
-    return lastValueFrom(this.http.post<any>(this.domain+'/api/register', data,));
+    return lastValueFrom(this.http.post<any>(this.domain+'/users/register', data,));
   }
-
   async login(data: any) {
-    return lastValueFrom(this.http.post<any>(this.domain+'/api/login', data));
+    return lastValueFrom(this.http.post<any>(this.domain+'/users/login', data));
   }
-
   async getUsers() {
-    return lastValueFrom(this.http.get<any>(this.domain+'/api/getUsers'));
+    return lastValueFrom(this.http.get<any>(this.domain+'/users/getUsers'));
   }
 
+
+//defence apis
   async addExerciseDetails(data: any) {
-    return lastValueFrom(this.http.post<any>(this.domain+'/api/addExerciseDetails', data));
+    return lastValueFrom(this.http.post<any>(this.domain+'/defence/addExerciseDetails', data));
   }
   async getExerciseDetails() {
-    return lastValueFrom(this.http.get<any>(this.domain+'/api/getExerciseDetails'));
+    return lastValueFrom(this.http.get<any>(this.domain+'/defence/getExerciseDetails'));
   }
+
+  
+  //sports apis
   async addMatchOfficials(data: any) {
-    return lastValueFrom(this.http.post<any>(this.domain+'/api/addMatchOfficials', data));
+    return lastValueFrom(this.http.post<any>(this.domain+'/sports/addMatchOfficials', data));
   }
   async getMatchOfficials() {
-    return lastValueFrom(this.http.get<any>(this.domain+'/api/getMatchOfficials'));
+    return lastValueFrom(this.http.get<any>(this.domain+'/sports/getMatchOfficials'));
   }
   async addVenueDetails(data: any) {
-    return lastValueFrom(this.http.post<any>(this.domain+'/api/addVenueDetails', data));
+    return lastValueFrom(this.http.post<any>(this.domain+'/sports/addVenueDetails', data));
   }
-  
   async editVenueDetails(data: any) {
-    return lastValueFrom(this.http.post<any>(this.domain+'/api/editVenueDetails', data));
+    return lastValueFrom(this.http.post<any>(this.domain+'/sports/editVenueDetails', data));
   }
   async getVenueDetails() {
-    return lastValueFrom(this.http.get<any>(this.domain+'/api/getVenueDetails'));
+    return lastValueFrom(this.http.get<any>(this.domain+'/sports/getVenueDetails'));
   }
   async addTeamDetails(data: any) {
-    return lastValueFrom(this.http.post<any>(this.domain+'/api/addTeamDetails', data));
+    return lastValueFrom(this.http.post<any>(this.domain+'/sports/addTeamDetails', data));
   }
   async getTeamDetails() {
-    return lastValueFrom(this.http.get<any>(this.domain+'/api/getTeamDetails'));
+    return lastValueFrom(this.http.get<any>(this.domain+'/sports/getTeamDetails'));
   }
   async addLeagueDetails(data: any) {
-    return lastValueFrom(this.http.post<any>(this.domain+'/api/addLeagueDetails', data));
+    return lastValueFrom(this.http.post<any>(this.domain+'/sports/addLeagueDetails', data));
   }
   async getLeagueDetails() {
-    return lastValueFrom(this.http.get<any>(this.domain+'/api/getLeagueDetails'));
+    return lastValueFrom(this.http.get<any>(this.domain+'/sports/getLeagueDetails'));
   }
-
   async addMatchSummary(data: any) {
-    return lastValueFrom(this.http.post<any>(this.domain+'/api/addMatchSummary', data));
+    return lastValueFrom(this.http.post<any>(this.domain+'/sports/addMatchSummary', data));
   }
   async getMatchSummary(data:any) {
-    return lastValueFrom(this.http.post<any>(this.domain+'/api/getMatchSummary',data));
+    return lastValueFrom(this.http.post<any>(this.domain+'/sports/getMatchSummary',data));
   }
-
   async getFixtureDetails(data: any) {
-    return lastValueFrom(this.http.post<any>(this.domain+'/api/getFixtureDetails',data));
+    return lastValueFrom(this.http.post<any>(this.domain+'/sports/getFixtureDetails',data));
   }
-  
   async getTeamsPlaying(data: any) {
-    return lastValueFrom(this.http.post<any>(this.domain+'/api/getTeamsPlaying',data));
+    return lastValueFrom(this.http.post<any>(this.domain+'/sports/getTeamsPlaying',data));
   }
   async getPlayersForMatch(data: any) {
-    return lastValueFrom(this.http.post<any>(this.domain+'/api/getPlayersForMatch',data));
+    return lastValueFrom(this.http.post<any>(this.domain+'/sports/getPlayersForMatch',data));
   }
   async addBattingDetails(data: any) {
-    return lastValueFrom(this.http.post<any>(this.domain+'/api/addBattingDetails', data));
+    return lastValueFrom(this.http.post<any>(this.domain+'/sports/addBattingDetails', data));
   }
   async addBowlingDetails(data: any) {
-    return lastValueFrom(this.http.post<any>(this.domain+'/api/addBowlingDetails', data));
+    return lastValueFrom(this.http.post<any>(this.domain+'/sports/addBowlingDetails', data));
   }
   async getBattingSummary(data:any) {
-    return lastValueFrom(this.http.post<any>(this.domain+'/api/getBattingSummary',data));
+    return lastValueFrom(this.http.post<any>(this.domain+'/sports/getBattingSummary',data));
   }
-  
   async getBowlingSummary(data:any) {
-    return lastValueFrom(this.http.post<any>(this.domain+'/api/getBowlingSummary',data));
+    return lastValueFrom(this.http.post<any>(this.domain+'/sports/getBowlingSummary',data));
   }
-
   async getFixtures(data:any) {
-    return lastValueFrom(this.http.post<any>(this.domain+'/api/getFixtures',data));
+    return lastValueFrom(this.http.post<any>(this.domain+'/sports/getFixtures',data));
   }
 }
